@@ -1,6 +1,6 @@
 # sp1-helios
 
-Experimenting SP1...
+Purely for personal experimentation using SP1...
 
 ### Getting Started
 
