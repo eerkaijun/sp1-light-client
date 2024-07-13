@@ -4,14 +4,21 @@ use dotenv::dotenv;
 use ethers::{types::Address, utils};
 use eyre::Result;
 use helios::{client::ClientBuilder, config::networks::Network, prelude::*, types::BlockTag};
+use tracing::info;
+use tracing_subscriber::FmtSubscriber;
 
 #[tokio::main]
 async fn main() -> Result<()> {
     dotenv().ok();
 
-    let untrusted_rpc_url = env::var("UNTRUSTED_RPC_URL")?;
-    println!("RPC URL: {:?}", untrusted_rpc_url);
+    // initialize tracing
+    let subscriber = FmtSubscriber::new();
+    tracing::subscriber::set_global_default(subscriber)?;
 
+    let untrusted_rpc_url = env::var("UNTRUSTED_RPC_URL")?;
+    info!("Untrusted RPC URL: {}", untrusted_rpc_url);
+
+    // initialize helios client
     let mut client: helios::client::Client<FileDB> = ClientBuilder::new()
         .network(Network::MAINNET)
         .consensus_rpc("https://www.lightclientdata.org")
@@ -28,8 +35,8 @@ async fn main() -> Result<()> {
     let block = BlockTag::Latest;
     let balance = client.get_balance(&addr, block).await?;
 
-    println!("synced up to block: {}", head_block_num);
-    println!("balance of deposit contract: {}", utils::format_ether(balance));
+    info!("synced up to block: {}", head_block_num);
+    info!("balance of deposit contract: {}", utils::format_ether(balance));
 
     Ok(())
 }

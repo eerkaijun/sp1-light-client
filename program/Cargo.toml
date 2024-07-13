@@ -9,3 +9,5 @@ ethers = { git = "https://github.com/gakonst/ethers-rs", rev = "3bf1a9e0d698e9fd
 eyre = "0.6.5"
 helios = { git = "https://github.com/a16z/helios" }
 tokio = { version = "1.38.0", features = ["full"] }    
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
