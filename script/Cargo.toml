@@ -1,0 +1,14 @@
+[package]
+name = "script"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "prove"
+path = "bin/prove.rs"
+
+[dependencies]
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+clap = { version = "4.0", features = ["derive", "env"] }
+sp1-sdk = { git = "https://github.com/succinctlabs/sp1.git", branch = "main" }

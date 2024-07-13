@@ -4,9 +4,8 @@
 sp1_zkvm::entrypoint!(main);
 
 pub fn main() {
-    let encoded_inputs = sp1_zkvm::io::read_vec();
-
-    let is_valid = true;
+    let n = sp1_zkvm::io::read::<u32>();
+    let is_valid = n % 2 == 0;
 
     assert!(is_valid);
 
