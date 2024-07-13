@@ -1,17 +1,14 @@
-use dotenv::dotenv;
-use eyre::Result;
-use tracing::info;
-use tracing_subscriber::FmtSubscriber;
+//! A light client state transition program to be proven inside the zkVM.
 
-#[tokio::main]
-async fn main() -> Result<()> {
-    dotenv().ok();
+#![no_main]
+sp1_zkvm::entrypoint!(main);
 
-    // initialize tracing
-    let subscriber = FmtSubscriber::new();
-    tracing::subscriber::set_global_default(subscriber)?;
+pub fn main() {
+    let encoded_inputs = sp1_zkvm::io::read_vec();
 
-    info!("Generating proofs...");
+    let is_valid = true;
 
-    Ok(())
+    assert!(is_valid);
+
+    sp1_zkvm::io::commit(&is_valid);
 }

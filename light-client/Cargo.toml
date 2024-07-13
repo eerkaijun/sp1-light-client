@@ -1,0 +1,13 @@
+[package]
+name = "light-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dotenv = "0.15.0"
+ethers = { git = "https://github.com/gakonst/ethers-rs", rev = "3bf1a9e0d698e9fdfc91d0353878901af5a5c5ef" }
+eyre = "0.6.5"
+helios = { git = "https://github.com/a16z/helios" }
+tokio = { version = "1.38.0", features = ["full"] }    
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
