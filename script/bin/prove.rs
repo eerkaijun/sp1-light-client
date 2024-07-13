@@ -40,7 +40,7 @@ fn main() {
 
     // Generate the proof.
     let proof = client
-        .prove_plonk(&pk, stdin)
+        .prove(&pk, stdin)
         .expect("failed to generate proof");
 
     println!("Proof generated!");
