@@ -32,7 +32,7 @@ fn main() {
     // Setup the program.
     let (pk, vk) = client.setup(ELF);
 
-    // Setup the inputs.;
+    // TODO: Setup inputs properly
     let mut stdin = SP1Stdin::new();
     stdin.write(&args.n);
 
